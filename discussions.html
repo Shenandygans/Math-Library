@@ -1,23 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Discussions</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Discussions | Math Library</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- MathJax -->
+  <script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
+
 <header class="navbar">
   <h1 class="title"><a href="index.html">Math Library</a></h1>
 </header>
 
 <main class="content">
-  <h2>Discussion Board</h2>
 
-  <textarea id="postInput" placeholder="Write a math thought..."></textarea>
-  <button onclick="addPost()">Post</button>
+<section class="card">
+  <h2>💬 Discussions</h2>
+  <p class="subtitle">
+    AoPS-style problem discussions and mathematical conversations.
+  </p>
+</section>
 
-  <div id="posts"></div>
+<!-- Create Thread -->
+<section class="card">
+  <h3>Create New Thread</h3>
+
+  <select id="category">
+    <option>Algebra</option>
+    <option>Geometry</option>
+    <option>Number Theory</option>
+    <option>Combinatorics</option>
+    <option>Calculus</option>
+  </select>
+
+  <input id="threadTitle" placeholder="Thread title (be specific)" />
+
+  <textarea id="threadContent"
+    placeholder="Write your problem or discussion. LaTeX supported: $x^2+y^2$"></textarea>
+
+  <button onclick="createThread()">Post Thread</button>
+</section>
+
+<!-- Threads -->
+<section class="card">
+  <h3>Threads</h3>
+  <div id="threads"></div>
+</section>
+
 </main>
+
+<script>
+const STORAGE_KEY = "math_library_threads";
+
+function loadThreads() {
+  const threads = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  const container = document.getElementById("threads");
+  container.innerHTML = "";
+
+  threads.forEach((thread, index) => {
+    const div = document.createElement("div");
+    div.className = "thread";
+
+    div.innerHTML = `
+      <h4>[${thread.category}] ${thread.title}</h4>
+      <p>${thread.content}</p>
+      <button onclick="toggleReplies(${index})">Replies (${thread.replies.length})</button>
+
+      <div class="replies" id="replies-${index}" style="display:none;">
+        ${thread.replies.map(r => `<p class="reply">↳ ${r}</p>`).join("")}
+        <textarea id="reply-${index}" placeholder="Write a reply (LaTeX allowed)"></textarea>
+        <button onclick="addReply(${index})">Reply</button>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+
+  MathJax.typeset();
+}
+
+function createThread() {
+  const title = document.getElementById("threadTitle").value.trim();
+  const content = document.getElementById("threadContent").value.trim();
+  const category = document.getElementById("category").value;
+
+  if (!title || !content) return;
+
+  const threads = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+  threads.unshift({
+    title,
+    content,
+    category,
+    replies: []
+  });
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(threads));
+  document.getElementById("threadTitle").value = "";
+  document.getElementById("threadContent").value = "";
+  loadThreads();
+}
+
+function toggleReplies(i) {
+  const el = document.getElementById(`replies-${i}`);
+  el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+function addReply(i) {
+  const input = document.getElementById(`reply-${i}`);
+  const text = input.value.trim();
+  if (!text) return;
+
+  const threads = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  threads[i].replies.push(text);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(threads));
+  loadThreads();
+}
+
+loadThreads();
+</script>
+
 </body>
 </html>
