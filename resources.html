@@ -1,21 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resources | Math Library</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-left">
+    <div class="dropdown">
+      <button class="dropbtn">Discussions ▾</button>
+      <div class="dropdown-content">
+        <a href="discussions.html">Forum</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Resources ▾</button>
+      <div class="dropdown-content">
+        <a href="resources.html">Library</a>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="title">
+    <a href="index.html">Math Library</a>
+  </h1>
+
+  <div class="nav-right">
+    <button id="darkToggle">🌙</button>
+    <a href="about.html" class="profile">👤</a>
+  </div>
+</header>
+
 <main class="content">
-  <h2>Resources</h2>
 
-  <h3>📘 Algebra</h3>
-  <ul>
-    <li>
-      <a href="resources/algebra/inequalities.pdf" target="_blank">
-        Inequalities Handout (PDF)
-      </a>
-    </li>
-  </ul>
+  <!-- Page Header -->
+  <section class="card">
+    <h2>📚 Resources</h2>
+    <p class="subtitle">
+      Curated notes, problem sets, and reference PDFs organized by topic and level.
+    </p>
+  </section>
 
-  <h3>📐 Geometry</h3>
-  <ul>
-    <li>
-      <a href="resources/geometry/circles.pdf" target="_blank">
-        Circles & Power of a Point (PDF)
-      </a>
-    </li>
-  </ul>
+  <!-- Algebra -->
+  <section class="card">
+    <h3>🧮 Algebra</h3>
+    <ul>
+      <li>
+        <strong>Inequalities Master Sheet</strong><br>
+        <span class="tag">AMC / AIME</span><br>
+        <a href="resources/algebra/inequalities.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+      <li>
+        <strong>Polynomial Techniques</strong><br>
+        <span class="tag">Olympiad</span><br>
+        <a href="resources/algebra/polynomials.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Geometry -->
+  <section class="card">
+    <h3>📐 Geometry</h3>
+    <ul>
+      <li>
+        <strong>Power of a Point</strong><br>
+        <span class="tag">AMC 10/12</span><br>
+        <a href="resources/geometry/power_of_a_point.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+      <li>
+        <strong>Circle Geometry Basics</strong><br>
+        <span class="tag">AMC</span><br>
+        <a href="resources/geometry/circles.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Number Theory -->
+  <section class="card">
+    <h3>🔢 Number Theory</h3>
+    <ul>
+      <li>
+        <strong>Modular Arithmetic Cheat Sheet</strong><br>
+        <span class="tag">AMC / AIME</span><br>
+        <a href="resources/number_theory/modular_arithmetic.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+      <li>
+        <strong>LTE (Lifting the Exponent)</strong><br>
+        <span class="tag">Olympiad</span><br>
+        <a href="resources/number_theory/lte.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Combinatorics -->
+  <section class="card">
+    <h3>🧠 Combinatorics</h3>
+    <ul>
+      <li>
+        <strong>Pigeonhole Principle</strong><br>
+        <span class="tag">AMC</span><br>
+        <a href="resources/combinatorics/pigeonhole.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+      <li>
+        <strong>Intro to Graph Theory</strong><br>
+        <span class="tag">Undergraduate</span><br>
+        <a href="resources/combinatorics/graph_theory.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Calculus -->
+  <section class="card">
+    <h3>📈 Calculus</h3>
+    <ul>
+      <li>
+        <strong>Definite Integrals Techniques</strong><br>
+        <span class="tag">High School</span><br>
+        <a href="resources/calculus/integrals.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+      <li>
+        <strong>Series & Convergence</strong><br>
+        <span class="tag">AP / Early College</span><br>
+        <a href="resources/calculus/series.pdf" target="_blank">
+          Open PDF →
+        </a>
+      </li>
+    </ul>
+  </section>
+
 </main>
+
+</body>
+</html>
