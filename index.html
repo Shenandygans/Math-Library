@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Math Library</title>
+
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 
@@ -16,6 +17,7 @@ window.MathJax = {
 </head>
 
 <body>
+
 <header class="navbar">
   <div class="nav-left">
     <div class="dropdown">
@@ -42,11 +44,99 @@ window.MathJax = {
 </header>
 
 <main class="content">
+
+<!-- Welcome -->
+<section class="card">
   <h2>Welcome to Math Library</h2>
   <p>
-    Explore math discussions, resources, and proofs.  
-    Example equation: $\\int_0^1 x^2 dx = \\frac{1}{3}$
+    A curated hub for problem solving, proofs, and competition mathematics.  
+    Example: $\int_0^1 x^2\,dx = \frac{1}{3}$
   </p>
+</section>
+
+<!-- Problem of the Day -->
+<section class="card">
+  <h3>🧠 Problem of the Day</h3>
+  <p>Prove that for $a,b,c>0$:</p>
+  $$
+  \frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge \frac{3}{2}
+  $$
+
+  <button onclick="toggleSolution()">Show Solution</button>
+
+  <div id="solution" style="display:none;">
+    <p>
+      <strong>Hint:</strong> Apply Cauchy–Schwarz (Titu's Lemma):
+    </p>
+    $$
+    \sum \frac{a}{b+c}
+    = \sum \frac{a^2}{ab+ac}
+    \ge \frac{(a+b+c)^2}{2(ab+bc+ca)} \ge \frac{3}{2}.
+    $$
+  </div>
+</section>
+
+<!-- Topic Tiles -->
+<section class="card">
+  <h3>📚 Topics</h3>
+  <div class="grid">
+    <a class="tile" href="resources.html">Algebra</a>
+    <a class="tile" href="resources.html">Geometry</a>
+    <a class="tile" href="resources.html">Number Theory</a>
+    <a class="tile" href="resources.html">Combinatorics</a>
+    <a class="tile" href="resources.html">Calculus</a>
+  </div>
+</section>
+
+<!-- Featured Resource -->
+<section class="card">
+  <h3>⭐ Featured Resource</h3>
+  <p><strong>Inequalities Master Sheet</strong></p>
+  <a href="resources/algebra/inequalities.pdf" target="_blank">
+    Open PDF →
+  </a>
+</section>
+
+<!-- Math Fact Generator -->
+<section class="card">
+  <h3>🎲 Math Fact</h3>
+  <p id="fact"></p>
+  <button onclick="newFact()">New Fact</button>
+</section>
+
+<!-- Recent Updates -->
+<section class="card">
+  <h3>📢 Recent Updates</h3>
+  <ul>
+    <li>Added Geometry resource section</li>
+    <li>Problem of the Day launched</li>
+    <li>Dark mode implemented</li>
+  </ul>
+</section>
+
 </main>
+
+<!-- Inline JS (can move to script.js) -->
+<script>
+function toggleSolution() {
+  const sol = document.getElementById("solution");
+  sol.style.display = sol.style.display === "none" ? "block" : "none";
+}
+
+const facts = [
+  "There are infinitely many prime numbers.",
+  "The harmonic series diverges.",
+  "Every planar graph is 4-colorable.",
+  "Almost all integers are composite.",
+  "π is irrational."
+];
+
+function newFact() {
+  document.getElementById("fact").innerText =
+    facts[Math.floor(Math.random() * facts.length)];
+}
+newFact();
+</script>
+
 </body>
-</html> 
+</html>
